@@ -8,7 +8,6 @@ on:
         type: string
 jobs:
   build:
-    environment: AEnvironment
     steps:
       - name: Say hello
         run: |
