@@ -7,7 +7,8 @@ on:
       param-1:
         type: string
 jobs:
-  build1:
+  build:
+    environment: AEnvironment
     steps:
       - name: Say hello
         run: |
