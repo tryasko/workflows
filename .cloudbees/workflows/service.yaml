@@ -9,8 +9,35 @@ jobs:
       redis:
         image: redis
     steps:
-      - name: Say hello
-        run: |
+      - run: |
           echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
+  format-test-build-publish-deploy:
+    needs: build
+    services:
+      redis:
+        image: redis
+    steps:
+      - run: |
+          echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
+  build-2:
+    needs: format-test-build-publish-deploy
+    steps:
+      - run: |
+          echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
+  format-test-build-publish-deploy-2:
+    needs: build-2
+    steps:
+      - run: |
+          echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
         shell: sh
