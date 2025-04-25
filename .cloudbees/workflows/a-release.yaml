@@ -15,9 +15,14 @@ metadata:
         - build
 jobs:
   build:
+    environment: ""
+    outputs: {}
+    services:
+      redis:
+        image: redis
     steps:
-      - name: Say hello
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
+      - run: |
           echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
