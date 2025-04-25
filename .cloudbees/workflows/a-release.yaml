@@ -14,6 +14,8 @@ metadata:
       jobs:
         - build
         - format-test-build-publish-deploy
+        - build-2
+        - format-test-build-publish-deploy-2
 jobs:
   build:
     services:
@@ -30,6 +32,22 @@ jobs:
     services:
       redis:
         image: redis
+    steps:
+      - run: |
+          echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
+  build-2:
+    needs: format-test-build-publish-deploy
+    steps:
+      - run: |
+          echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
+  format-test-build-publish-deploy-2:
+    needs: build-2
     steps:
       - run: |
           echo "hello world"
