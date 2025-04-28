@@ -16,7 +16,8 @@ metadata:
 jobs:
   build:
     environment: ""
-    outputs: {}
+    outputs:
+      вввв: "                           "
     steps:
       - run: |
           echo "hello world"
