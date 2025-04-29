@@ -10,6 +10,9 @@ on:
         description: A sample manifest should go here, to help user
 metadata:
   stages/v1alpha1:
+    - name: Stage
+      jobs:
+        - job
 jobs:
   build:
     services:
@@ -22,7 +25,8 @@ jobs:
         name: Say hello
         shell: sh
   format-test-build-publish-deploy:
-    needs: build
+    needs:
+      - build
     services:
       redis:
         image: redis
@@ -33,7 +37,8 @@ jobs:
         name: Say hello
         shell: sh
   build-2:
-    needs: format-test-build-publish-deploy
+    needs:
+      - format-test-build-publish-deploy
     steps:
       - run: |
           echo "hello world"
@@ -41,10 +46,17 @@ jobs:
         name: Say hello
         shell: sh
   format-test-build-publish-deploy-2:
-    needs: build-2
+    needs:
+      - build-2
     steps:
       - run: |
           echo "hello world"
         uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
         shell: sh
+  job:
+    steps:
+      - name: Say hello
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: echo "hello world"
