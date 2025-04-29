@@ -10,15 +10,6 @@ on:
         description: A sample manifest should go here, to help user
 metadata:
   stages/v1alpha1:
-    - name: Stage
-      jobs:
-        - build
-    - name: Stage1
-      jobs:
-        - job-1
-    - name: Stage2
-      jobs:
-        - job-2
 jobs:
   build:
     steps:
