@@ -1,0 +1,51 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: neeeeds
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        type: string
+        required: true
+        description: A sample manifest should go here, to help user
+metadata:
+  stages/v1alpha1:
+    - name: Prod
+      jobs:
+        - deploy-to-Prod
+    - name: Stage
+      jobs:
+        - job
+        - sswswded
+    - name: Stage1
+      jobs:
+        - job133
+jobs:
+  deploy-to-Prod:
+    steps:
+      - name: Deploy to Prod
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: echo "Deploying to Prod"
+    needs: []
+  job:
+    needs: deploy-to-Prod
+    steps:
+      - name: Say hello
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: echo "hello world"
+  sswswded:
+    needs: job
+    steps:
+      - uses: eded
+  job133:
+    needs:
+      - sswswded
+    environment: ""
+    outputs: {}
+    steps:
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello
+        shell: sh
