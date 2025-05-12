@@ -13,7 +13,7 @@ metadata:
     - name: Prod
       jobs:
         - deploy-to-Prod
-        - aaa
+        - tttest
         - swsws
     - name: Stage
       jobs:
@@ -25,19 +25,17 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: echo "Deploying to Prod"
-  aaa:
-    steps:
-      - uses: aaa
   swsws:
-    needs:
-      - aaa
+    needs: tttest
     steps:
       - uses: edede
   job:
-    needs:
-      - swsws
+    needs: swsws
     steps:
       - name: Say hello
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: echo "hello world"
+  tttest:
+    steps:
+      - uses: aaa
