@@ -30,7 +30,6 @@ jobs:
       - uses: aaa
   swsws:
     needs:
-      - deploy-to-Prod
       - aaa
     steps:
       - uses: edede
