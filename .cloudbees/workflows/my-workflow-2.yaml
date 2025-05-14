@@ -4,6 +4,8 @@ name: My workflow
 on:
   workflow_call:
 jobs:
+  call_rw1:
+    uses: mluzcabrera/testreusableworkflows/.cloudbees/workflows/rw1.yaml
   build:
     steps:
       - name: Say hello
